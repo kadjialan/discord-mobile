@@ -1,9 +1,7 @@
 import React from "react";
 import { styles } from "./Login.styles";
 import {
-  StyleSheet,
   Text,
-  View,
   SafeAreaView,
   ScrollView,
   TextInput,
@@ -21,7 +19,7 @@ export default function App() {
         <TextInput
           style={styles.input}
           placeholderTextColor="grey"
-          placeholder="email"
+          placeholder="Email addresse"
         />
         <TextInput
           style={styles.input}
