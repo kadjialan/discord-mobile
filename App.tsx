@@ -9,32 +9,39 @@ import { FIREBASE_AUTH } from "./firebase /firebase";
 const Stake = createNativeStackNavigator();
 const InsideStack = createNativeStackNavigator();
 
-function insideLayout() {
+function InsideLayout() {
   return (
     <InsideStack.Navigator>
-      <InsideStack.Screen name="Chats" component={Chats} />
+      <InsideStack.Screen name="chats" component={Chats} options={{ headerShown: false }}/>
     </InsideStack.Navigator>
   );
 }
 
-export default function App() {
+export default function App():any {
   const [user, setUser] = useState<User | null>(null);
 
-
   useEffect(() => {
-onAuthStateChanged(FIREBASE_AUTH,(user)=> {
-  console.log('user', user)
-  setUser(user)
-})
-  },[])
+    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      console.log("user", user);
+      setUser(user);
+    });
+  }, []);
   return (
     <NavigationContainer>
       <Stake.Navigator initialRouteName="Login">
-        <Stake.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
+        {user ? (
+          <Stake.Screen
+            name="messages"
+            component={InsideLayout}
+            options={{ headerShown: false }}
+          />
+        ) : (
+          <Stake.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }}
+          />
+        )}
       </Stake.Navigator>
     </NavigationContainer>
   );

@@ -5,13 +5,12 @@ import {
   SafeAreaView,
   ScrollView,
   TextInput,
-  Pressable,
-  KeyboardAvoidingView,
+  Pressable
 } from "react-native";
 import { FIREBASE_AUTH } from "../../../firebase /firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
-export default function App() {
+export default function Login(): any {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = FIREBASE_AUTH;
