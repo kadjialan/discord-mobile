@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
     color: "lightgrey",
     fontSize: 20,
     alignSelf: "center",
+    textAlign: 'center',
     marginBottom: 30,
   },
   text: {
