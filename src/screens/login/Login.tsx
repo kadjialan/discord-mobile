@@ -5,35 +5,45 @@ import {
   SafeAreaView,
   ScrollView,
   TextInput,
-  Pressable
+  Pressable,
 } from "react-native";
 import { FIREBASE_AUTH } from "../../../firebase /firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import Loader from "../../components/loader/Loader";
 
 export default function Login(): any {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const auth = FIREBASE_AUTH;
 
   const signIn = async () => {
+    setLoading(true);
     try {
       const responce = signInWithEmailAndPassword(auth, email, password);
-      console.log(responce)
+      console.log(responce);
     } catch (error: any) {
-      console.log(error)
-      alert('sign in failed :'+ error.message)
+      console.log(error);
+      alert("sign in failed :" + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
-
   const signUp = async () => {
+    setLoading(true);
     try {
       const responce = createUserWithEmailAndPassword(auth, email, password);
-      console.log(responce)
-      alert('check your emails')
+      console.log(responce);
+      alert("check your emails");
     } catch (error: any) {
-      console.log(error)
-      alert('sign in failed :'+ error.message)
+      console.log(error);
+      alert("sign in failed :" + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,13 +70,15 @@ export default function Login(): any {
           secureTextEntry={true}
         />
 
+        {loading && <Loader />}
+
         <Text style={styles.forgotPasswordText}>Forgot password?</Text>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText} onPress={() => signIn()}>Login</Text>
+        <Pressable style={styles.button} onPress={() => signIn()}>
+          <Text style={styles.buttonText}>Login</Text>
         </Pressable>
 
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText} onPress={() => signUp()}>sign up with google</Text>
+        <Pressable style={styles.button} onPress={() => signUp()}>
+          <Text style={styles.buttonText}>sign up with google</Text>
         </Pressable>
       </ScrollView>
     </SafeAreaView>
