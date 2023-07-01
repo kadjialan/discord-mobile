@@ -6,13 +6,14 @@ import {
   ScrollView,
   TextInput,
   Pressable,
+  View,
+  ActivityIndicator,
 } from "react-native";
 import { FIREBASE_AUTH } from "../../../firebase /firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import Loader from "../../components/loader/Loader";
 
 export default function Login(): any {
   const [email, setEmail] = useState("");
@@ -22,29 +23,33 @@ export default function Login(): any {
 
   const signIn = async () => {
     setLoading(true);
-    try {
-      const responce = signInWithEmailAndPassword(auth, email, password);
-      console.log(responce);
-    } catch (error: any) {
-      console.log(error);
-      alert("sign in failed :" + error.message);
-    } finally {
-      setLoading(false);
-    }
+    setTimeout(() => {
+      try {
+        const responce = signInWithEmailAndPassword(auth, email, password);
+        console.log(responce);
+      } catch (error: any) {
+        console.log(error);
+        alert("sign in failed :" + error.message);
+      } finally {
+        setLoading(false);
+      }
+    },1000);
   };
 
   const signUp = async () => {
     setLoading(true);
-    try {
-      const responce = createUserWithEmailAndPassword(auth, email, password);
-      console.log(responce);
-      alert("check your emails");
-    } catch (error: any) {
-      console.log(error);
-      alert("sign in failed :" + error.message);
-    } finally {
-      setLoading(false);
-    }
+    setTimeout(() => {
+      try {
+        const responce = createUserWithEmailAndPassword(auth, email, password);
+        console.log(responce);
+        alert("check your emails");
+      } catch (error: any) {
+        console.log(error);
+        alert("sign in failed :" + error.message);
+      } finally {
+        setLoading(false);
+      }
+    }, 1000);
   };
 
   return (
@@ -70,7 +75,11 @@ export default function Login(): any {
           secureTextEntry={true}
         />
 
-        {loading && <Loader />}
+        {loading && (
+          <View style={styles.load}>
+            <ActivityIndicator size="large" color="gray" />
+          </View>
+        )}
 
         <Text style={styles.forgotPasswordText}>Forgot password?</Text>
         <Pressable style={styles.button} onPress={() => signIn()}>

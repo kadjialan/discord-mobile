@@ -48,4 +48,12 @@ export const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
+  load: {
+    position: "absolute",
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
 });
