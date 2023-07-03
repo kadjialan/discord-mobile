@@ -19,37 +19,52 @@ export default function Login(): any {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [emailValidError, setEmailValidError] = useState(false);
+  const [passwordValidator, setPasswordValidator] = useState(false);
   const auth = FIREBASE_AUTH;
 
   const signIn = async () => {
-    setLoading(true);
-    setTimeout(() => {
-      try {
-        const responce = signInWithEmailAndPassword(auth, email, password);
-        console.log(responce);
-      } catch (error: any) {
-        console.log(error);
-        alert("sign in failed :" + error.message);
-      } finally {
-        setLoading(false);
-      }
-    },1000);
+      setLoading(true);
+      setTimeout(() => {
+        try {
+          const responce = signInWithEmailAndPassword(auth, email, password);
+          console.log(responce);
+        } catch (error: any) {
+          console.log(error);
+          alert("sign in failed :" + error.message);
+        } finally {
+          setLoading(false);
+        }
+      }, 1000);
   };
 
   const signUp = async () => {
-    setLoading(true);
-    setTimeout(() => {
-      try {
-        const responce = createUserWithEmailAndPassword(auth, email, password);
-        console.log(responce);
-        alert("check your emails");
-      } catch (error: any) {
-        console.log(error);
-        alert("sign in failed :" + error.message);
-      } finally {
-        setLoading(false);
-      }
-    }, 1000);
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+
+    if (reg.test(email) === false) {
+      setEmailValidError(true);
+    }
+    if (password.length <= 6) setPasswordValidator(true);
+
+    if (password.length >= 6 && reg.test(email) === true) {
+      setLoading(true);
+      setTimeout(() => {
+        try {
+          const responce = createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          console.log(responce);
+          alert("check your emails");
+        } catch (error: any) {
+          console.log(error);
+          alert("sign in failed :" + error.message);
+        } finally {
+          setLoading(false);
+        }
+      }, 1000);
+    }
   };
 
   return (
@@ -66,6 +81,11 @@ export default function Login(): any {
           value={email}
           onChangeText={(text) => setEmail(text)}
         />
+
+        {emailValidError && (
+          <Text style={styles.warning}>enter valid email address</Text>
+        )}
+
         <TextInput
           style={styles.input}
           placeholderTextColor="grey"
@@ -74,6 +94,11 @@ export default function Login(): any {
           onChangeText={(text) => setPassword(text)}
           secureTextEntry={true}
         />
+        {passwordValidator && (
+          <Text style={styles.warning}>
+            Password should be atleast 6 character Long
+          </Text>
+        )}
 
         {loading && (
           <View style={styles.load}>

@@ -56,4 +56,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
   },
+
+  warning: {
+    flex: 1,
+    width: '100%',
+    textAlign: "center",
+    color: "red",
+  },
 });
