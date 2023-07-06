@@ -8,8 +8,18 @@ export const styles = StyleSheet.create({
     paddingVertical: 30,
   },
   sidebar: {
-    flex: 1,
-    flexDirection: "column",
-    backgroundColor: "red",
-  }
+    width: 60,
+    height: "100vh",
+    backgroundColor: "#606070",
+  },
+  textStyle: {
+    textAlign: "center",
+    color: "#fff",
+    fontSize: 18,
+    padding: 7,
+  },
+  picture: {
+    width: 70,
+    height: 79,
+  },
 });
