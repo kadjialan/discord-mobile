@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#36393E",
+    backgroundColor: "#282b30",
     flex: 1,
     padding: 10,
     paddingVertical: 30,
@@ -11,12 +11,11 @@ export const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     gap: 7,
-    alignItems: "center"
+    alignItems: "center",
   },
   sidebar: {
     width: 60,
     height: "100vh",
-    backgroundColor: "#606070",
   },
   textStyle: {
     textAlign: "center",
@@ -43,8 +42,15 @@ export const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 20,
-    backgroundColor: "#606070",
+    backgroundColor: "#36393e",
     borderRadius: 5,
+  },
+  contacts__header: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
   },
   h1: {
     color: "#fff",
@@ -64,10 +70,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     gap: 7,
     marginBottom: 15,
-    backgroundColor: "#ede4e4d1",
   },
   name: {
     fontSize: 18,
     fontWeight: "500",
-  }
+    color: "#edede996",
+  },
+  message: {
+    color: "#edede996",
+  },
 });

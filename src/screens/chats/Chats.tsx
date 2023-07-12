@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { styles } from "./Chats.styles";
 import { Data } from "./sidebar/index";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 function Chats() {
   const [img, setImg] = useState(Data);
@@ -33,7 +34,14 @@ function Chats() {
           </View>
 
           <View style={styles.contacts}>
-            <Text style={styles.h1}>Direct Messag...</Text>
+            <View style={styles.contacts__header}>
+              <Text style={styles.h1}>Direct Messag...</Text>
+              <MaterialCommunityIcons
+                name="message-badge"
+                size={24}
+                color="#edede996"
+              />
+            </View>
 
             <TextInput
               placeholderTextColor="grey"
@@ -47,8 +55,8 @@ function Chats() {
                 <View style={styles.contactInfos}>
                   <Image source={item.pic} style={styles.profile} />
                   <View>
-                    <Text style ={styles.name}>{item.name}</Text>
-                    <Text>{item.message}</Text>
+                    <Text style={styles.name}>{item.name}</Text>
+                    <Text style={styles.message}>{item.message}</Text>
                   </View>
                 </View>
               )}
