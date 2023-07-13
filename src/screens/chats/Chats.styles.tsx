@@ -79,4 +79,11 @@ export const styles = StyleSheet.create({
   message: {
     color: "#edede996",
   },
+  searchIcon: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    marginTop: 11,
+    marginRight: 5,
+  }
 });

@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "./firebase /firebase";
+import { Text } from 'react-native';
+import MyTabs from "./src/Navigation";
 
 const Stake = createNativeStackNavigator();
 const InsideStack = createNativeStackNavigator();
@@ -12,12 +14,16 @@ const InsideStack = createNativeStackNavigator();
 function InsideLayout() {
   return (
     <InsideStack.Navigator>
-      <InsideStack.Screen name="chats" component={Chats} options={{ headerShown: false }}/>
+      <InsideStack.Screen
+        name="chats"
+        component={MyTabs}
+        options={{ headerShown: false }}
+      />
     </InsideStack.Navigator>
   );
 }
 
-export default function App():any {
+export default function App(): any {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -30,11 +36,13 @@ export default function App():any {
     <NavigationContainer>
       <Stake.Navigator initialRouteName="Login">
         {user ? (
-          <Stake.Screen
-            name="messages"
-            component={InsideLayout}
-            options={{ headerShown: false }}
-          />
+          <>
+            <Stake.Screen
+              name="messages"
+              component={InsideLayout}
+              options={{ headerShown: false }}
+            />
+          </>
         ) : (
           <Stake.Screen
             name="Login"

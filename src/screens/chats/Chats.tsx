@@ -10,6 +10,9 @@ import {
 import { styles } from "./Chats.styles";
 import { Data } from "./sidebar/index";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import MyTabs from '../../Navigation';
+import { NavigationContainer } from "@react-navigation/native";
 
 function Chats() {
   const [img, setImg] = useState(Data);
@@ -43,11 +46,15 @@ function Chats() {
               />
             </View>
 
-            <TextInput
-              placeholderTextColor="grey"
-              placeholder="Start a conversation"
-              style={styles.input}
-            />
+            <View style={{ position: 'relative' }}>
+              <TextInput
+                placeholderTextColor="grey"
+                placeholder="Start a conversation"
+                style={styles.input}
+              />
+              <AntDesign name="search1" size={20} color="#edede996" style={styles.searchIcon} />
+            </View>
+
             <FlatList
               data={img}
               keyExtractor={(item) => item.id.toString()}
@@ -67,5 +74,6 @@ function Chats() {
     </View>
   );
 }
+
 
 export default Chats;
