@@ -10,12 +10,13 @@ export const styles = StyleSheet.create({
   chatsWrapper: {
     display: "flex",
     flexDirection: "row",
-    gap: 7,
+    gap: 15,
     alignItems: "center",
   },
   sidebar: {
     width: 60,
     height: "100vh",
+    backgroundColor: 'red',
   },
   textStyle: {
     textAlign: "center",
@@ -85,5 +86,12 @@ export const styles = StyleSheet.create({
     right: 0,
     marginTop: 11,
     marginRight: 5,
+  },
+  messageIcon: {
+    alignSelf: 'center',
+    padding: 10,
+    backgroundColor: 'blue',
+    borderRadius: 12,
+    marginBottom: 10,
   }
 });

@@ -11,8 +11,7 @@ import { styles } from "./Chats.styles";
 import { Data } from "./sidebar/index";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import MyTabs from '../../Navigation';
-import { NavigationContainer } from "@react-navigation/native";
+
 
 function Chats() {
   const [img, setImg] = useState(Data);
@@ -22,9 +21,14 @@ function Chats() {
   });
   return (
     <View style={styles.container}>
-      <ScrollView>
         <View style={styles.chatsWrapper}>
           <View style={styles.sidebar}>
+          <MaterialCommunityIcons
+                name="message"
+                size={24}
+                color="#fff"
+                style={styles.messageIcon}
+              />
             <FlatList
               data={img}
               keyExtractor={(item) => item.id.toString()}
@@ -70,7 +74,6 @@ function Chats() {
             />
           </View>
         </View>
-      </ScrollView>
     </View>
   );
 }
