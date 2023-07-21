@@ -14,9 +14,16 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   sidebar: {
-    width: 60,
+    width: 67,
     height: "100vh",
-    backgroundColor: 'red',
+  },
+  btn: {
+    width: 10,
+    height: 10,
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    marginBottom: 20,
+    marginLeft: -5,
   },
   textStyle: {
     textAlign: "center",
@@ -29,9 +36,13 @@ export const styles = StyleSheet.create({
     height: 52,
     borderRadius: 70,
     marginBottom: 20,
-    alignSelf: "center",
   },
-
+groups: {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+},
   profile: {
     width: 40,
     height: 40,
@@ -89,9 +100,28 @@ export const styles = StyleSheet.create({
   },
   messageIcon: {
     alignSelf: 'center',
-    padding: 10,
-    backgroundColor: 'blue',
+    paddingLeft: 11,
+    paddingRight: 11,
+    paddingTop:12,
+    paddingBottom: 12,
+    backgroundColor: '#4361ee',
     borderRadius: 12,
     marginBottom: 10,
-  }
+  },
+  messageBar: {
+    width: 5,
+    height: 40,
+    backgroundColor: '#fff',
+    marginBottom: 10,
+    borderRadius: 12,
+  },
+  online: {
+    width: 11,
+    height: 11,
+    position: "absolute",
+    backgroundColor: '#3bc14a',
+    bottom: 3,
+    right: 1,
+    borderRadius: 50,
+  },
 });

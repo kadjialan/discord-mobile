@@ -3,6 +3,7 @@ import Chats from "./screens/chats/Chats";
 import Contact from "./screens/contacts/Contact";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import Profile from "./screens/profile/Profile";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,6 +23,17 @@ export default function MyTabs() {
       <Tab.Screen
         name="Settings"
         component={Contact}
+        options={{
+          headerShown: false, 
+         tabBarIcon: () => (
+           <Ionicons name="notifications" color='#edede996' size={20}/>
+         ),
+       }}
+      />
+
+<Tab.Screen
+        name="profile"
+        component={Profile}
         options={{
           headerShown: false, 
          tabBarIcon: () => (
