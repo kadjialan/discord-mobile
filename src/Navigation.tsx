@@ -9,7 +9,14 @@ const Tab = createBottomTabNavigator();
 
 export default function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator 
+    screenOptions={{
+      tabBarStyle: {
+        backgroundColor: "black",
+
+      }
+    }}
+    >
       <Tab.Screen
         name="Home"
         component={Chats}

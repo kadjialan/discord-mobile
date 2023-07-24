@@ -68,24 +68,26 @@ function Chats() {
             />
           </View>
 
-          <FlatList
-            data={img}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <View style={styles.contactInfos}>
-                <View style={{ position: "relative" }}>
-                <Image source={item.pic} style={styles.profile} />
-                <View style={styles.online}/>
-                <View/>
+          <ScrollView>
+            <FlatList
+              data={img}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => (
+                <View style={styles.contactInfos}>
+                  <View style={{ position: "relative" }}>
+                    <Image source={item.pic} style={styles.profile} />
+                    <View style={styles.online} />
+                    <View />
+                  </View>
+
+                  <View>
+                    <Text style={styles.name}>{item.name}</Text>
+                    <Text style={styles.message}>{item.message}</Text>
+                  </View>
                 </View>
-               
-                <View>
-                  <Text style={styles.name}>{item.name}</Text>
-                  <Text style={styles.message}>{item.message}</Text>
-                </View>
-              </View>
-            )}
-          />
+              )}
+            />
+          </ScrollView>
         </View>
       </View>
     </View>
