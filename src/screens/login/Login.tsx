@@ -44,7 +44,7 @@ export default function Login(): any {
     if (reg.test(email) === false) {
       setEmailValidError(true);
     }
-    if (password.length < 6) setPasswordValidator(true);
+    if (password.length <= 6) setPasswordValidator(true);
 
     if (password.length >= 6 && reg.test(email) === true) {
       setLoading(true);
@@ -56,6 +56,7 @@ export default function Login(): any {
             password
           );
           console.log(responce);
+          alert("check your emails");
         } catch (error: any) {
           console.log(error);
           alert("sign in failed :" + error.message);
